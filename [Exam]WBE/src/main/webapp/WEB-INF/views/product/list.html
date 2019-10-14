@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Danh sach san pham</title>
+</head>
+<body>
+<h1>Danh sach san pham</h1>
+<table border="2">
+    <tr>
+        <th>ID</th>
+        <th>Ten hang</th>
+        <th>Loai hang</th>
+        <th>Chinh sua</th>
+        <th>Xoa</th>
+    </tr>
+    <th:block th:each="product:${products}">
+        <tr>
+            <td th:text="${product.id}"></td>
+            <td th:text="${product.productName}"></td>
+            <td th:text="${product.productType}"></td>
+            <td><a th:href="@{/edit-product/__${product.id}__}">Chinh sua</a></td>
+            <td><a th:href="@{/remove-product/__${product.id}__}"></a>Xoa</td>
+        </tr>
+    </th:block>
+</table>
+    <a href="/create-product">Them moi san pham</a>
+</body>
+</html>
